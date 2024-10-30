@@ -5,96 +5,96 @@ import FighterTeam from './FighterTeam'
 
 const App = () => {
   
-  const [team, setTeam] = useState([])
+  const [army, setArmy] = useState([])
   const [money, setMoney] = useState(100)
   const [totalStrength, setTotalStrength] = useState(0)
   const [totalAgility, setTotalAgility] = useState(0)
-  const [zombiefighters, setZombieFighters] = useState([
+  const [polyFighters, setPolyFighters] = useState([
     {
-      name: 'Survivor',
+      name: 'Warrior',
       price: 12,
       strength: 6,
       agility: 4,
-      img: 'https://dummyimage.com/150x150/8c2a8c/000000&text=Survivor',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/1/19/To-Li_Warrior.png',
     },
     {
-      name: 'Scavenger',
+      name: 'Rider',
       price: 10,
       strength: 5,
       agility: 5,
-      img: 'https://dummyimage.com/150x150/315910/000000&text=Scavenger',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/2/2c/Urkaz_Rider.png',
     },
     {
-      name: 'Shadow',
+      name: 'Defender',
       price: 18,
       strength: 7,
       agility: 8,
-      img: 'https://dummyimage.com/150x150/993b20/000000&text=Shadow',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/0/02/Cultist_Defender.png',
     },
     {
-      name: 'Tracker',
+      name: 'Catapult',
       price: 14,
       strength: 7,
       agility: 6,
-      img: 'https://dummyimage.com/150x150/e3e2ca/000000&text=Tracker',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/6/6f/CatapultI.png',
     },
     {
-      name: 'Sharpshooter',
+      name: 'Archer',
       price: 20,
       strength: 6,
       agility: 8,
-      img: 'https://dummyimage.com/150x150/f0e50c/000000&text=Sharpshooter',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/3/31/Yorthwober_Archer.png',
     },
     {
-      name: 'Medic',
+      name: 'Mind Bender',
       price: 15,
       strength: 5,
       agility: 7,
-      img: 'https://dummyimage.com/150x150/5ce065/000000&text=Medic',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/9/99/MindBenderA.png',
     },
     {
-      name: 'Engineer',
+      name: 'Swordsman',
       price: 16,
       strength: 6,
       agility: 5,
-      img: 'https://dummyimage.com/150x150/bfbe95/000000&text=Engineer',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/8/82/Anzala_Swordsman.png',
     },
     {
-      name: 'Brawler',
+      name: 'Knight',
       price: 11,
       strength: 8,
       agility: 3,
-      img: 'https://dummyimage.com/150x150/cfb2cc/000000&text=Brawler',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/8/8e/KnightB.png',
     },
     {
-      name: 'Infiltrator',
+      name: 'Cloak',
       price: 17,
       strength: 5,
       agility: 9,
-      img: 'https://dummyimage.com/150x150/619bb0/000000&text=Infiltrator',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/e/ef/CloakC.png',
     },
     {
-      name: 'Leader',
+      name: 'Giant',
       price: 22,
       strength: 7,
       agility: 6,
-      img: 'https://dummyimage.com/150x150/302f0c/000000&text=Leader',
+      img: 'https://static.wikia.nocookie.net/supertribes/images/b/bf/GiantY.png',
     },
   ])
   
 
   return (
     <>
-      <h1>Zombie Fighters!</h1>
+      <h1>Poly Fighters!</h1>
       <header>
         <h3>Money: ${money}</h3>
         <h3>Total Strength: {totalStrength}</h3>
         <h3>Total Agility: {totalAgility}</h3>
-        <h3>Current team</h3>
+        <h3>Current army</h3>
         <section>
-        {team.map((fighter, idx) => (
+        {army.map((fighter, idx) => (
             <ul>
-              <li><img src={fighter.img} alt="Image of Zombie Fighter!" /></li>
+              <li><img src={fighter.img} alt="Image of Poly Fighter!" /></li>
               <li>#{idx}</li>
               <li>{fighter.name}</li>
               <li>price: {fighter.price}</li>
@@ -105,11 +105,11 @@ const App = () => {
         ))}
         </section>
       </header>
-      <h4>Buy team members!</h4>
+      <h4>Buy army members!</h4>
       <section>
-        {zombiefighters.map((fighter, idx) => (
+        {polyFighters.map((fighter, idx) => (
             <ul>
-              <li><img src={fighter.img} alt="Image of Zombie Fighter!" /></li>
+              <li><img src={fighter.img} alt="Image of Poly Fighter!" /></li>
               <li>#{idx}</li>
               <li>{fighter.name}</li>
               <li>price: {fighter.price}</li>
@@ -126,7 +126,7 @@ const App = () => {
 
   function handleAddFighter(fighterID) {
     let fighterArrayID = fighterID.idx /* The ID was nested weird for some reason */
-    let selectedFighter = zombiefighters[fighterArrayID]
+    let selectedFighter = polyFighters[fighterArrayID]
 
     let cost = selectedFighter.price
     if (cost > money) {
@@ -136,7 +136,7 @@ const App = () => {
       console.log('Old balance:', money)
       console.log('New balance:', newMoney)
       setMoney(newMoney)
-      team.push(selectedFighter)
+      army.push(selectedFighter)
 
       recalculateTotals()
     }
@@ -144,22 +144,22 @@ const App = () => {
 
   function handleRemoveFighter(fighterID) {
     let fighterArrayID = fighterID.idx /* The ID was nested weird for some reason */
-    let selectedFighter = team[fighterArrayID]
+    let selectedFighter = army[fighterArrayID]
 
     let cost = selectedFighter.price
     let newMoney = money + cost
     console.log('Old balance:', money)
     console.log('New balance:', newMoney)
     setMoney(newMoney)
-    team.splice(selectedFighter, 1) 
+    army.splice(selectedFighter, 1) 
 
     recalculateTotals()
   }
 
   function calculateTotal(value, totalValue, setTotalValue) {
     let newValue = 0
-    for (let teamMember of team) {
-      newValue += teamMember[value]
+    for (let armyMember of army) {
+      newValue += armyMember[value]
     }
     console.log(`old ${value}, ${totalValue}`)
     console.log(`New ${value}, ${newValue}`)
