@@ -1,0 +1,16 @@
+section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul {
+  list-style: none;
+  margin: 10px;
+  flex-direction: column;
+}
+
+/* li {
+  list-style: none;
+  margin: 10px;
+  flex-direction: column;
+} */
